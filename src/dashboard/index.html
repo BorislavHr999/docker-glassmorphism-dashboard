@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <title>Админ Панел</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        
+        .fade-text {
+            transition: opacity 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen p-10 font-sans transition-all duration-500">
+
+    <div class="max-w-4xl mx-auto">
+        <nav class="flex flex-col md:flex-row justify-between items-center mb-10 border-b border-gray-700 pb-4 gap-4">
+            
+            <h1 class="text-3xl font-bold text-purple-400" data-i18n="dashboard_title">
+                Dashboard
+            </h1>
+
+            <div class="flex items-center gap-4">
+                <select id="language-selector" onchange="changeLanguage(this.value)" 
+                        class="bg-gray-800 text-white border border-gray-600 rounded px-3 py-1 text-sm focus:outline-none focus:border-purple-500 hover:bg-gray-700 transition">
+                    <option value="bg">🇧🇬 Български</option>
+                    <option value="en">🇬🇧 English</option>
+                    <option value="de">🇩🇪 Deutsch</option>
+                    <option value="fr">🇫🇷 Français</option>
+                    <option value="ru">🇷🇺 Русский</option>
+                    <option value="es">🇪🇸 Español</option>
+                    <option value="it">🇮🇹 Italiano</option>
+                </select>
+
+                <a href="/" class="text-gray-400 hover:text-white transition text-sm" data-i18n="back_home">
+                    ← Обратно
+                </a>
+            </div>
+        </nav>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700 hover:border-purple-500 transition duration-300">
+                <h3 class="text-gray-400 text-sm uppercase" data-i18n="server_status">Статус на сървъра</h3>
+                <p class="text-3xl font-bold text-green-400 mt-2" data-i18n="status_active">Active</p>
+                <p class="text-xs text-gray-500 mt-1">Uptime: 99.9%</p>
+            </div>
+
+            <div class="bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700 hover:border-blue-500 transition duration-300">
+                <h3 class="text-gray-400 text-sm uppercase" data-i18n="redis_connection">Redis Връзка</h3>
+                <p class="text-3xl font-bold text-blue-400 mt-2" data-i18n="status_connected">Connected</p>
+                <p class="text-xs text-gray-500 mt-1">Port: 6379</p>
+            </div>
+
+            <div class="bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700 hover:border-pink-500 transition duration-300">
+                <h3 class="text-gray-400 text-sm uppercase" data-i18n="users">Потребители</h3>
+                <p class="text-3xl font-bold text-pink-400 mt-2">1,240</p>
+                <p class="text-xs text-gray-500 mt-1" data-i18n="growth">+12% от вчера</p>
+            </div>
+        </div>
+        
+        <div class="mt-10 text-center text-gray-600 text-xs">
+            <p data-i18n="footer">Powered by Docker & Nginx</p>
+        </div>
+    </div>
+
+    <script>
+        
+        const translations = {
+            bg: {
+                dashboard_title: "Табло за управление",
+                back_home: "← Обратно",
+                server_status: "Статус на сървъра",
+                redis_connection: "Redis Връзка",
+                users: "Потребители",
+                status_active: "Активен",
+                status_connected: "Свързан",
+                growth: "+12% от вчера",
+                footer: "Задвижвано от Docker & Nginx"
+            },
+            en: {
+                dashboard_title: "Dashboard",
+                back_home: "← Back Home",
+                server_status: "Server Status",
+                redis_connection: "Redis Connection",
+                users: "Users",
+                status_active: "Active",
+                status_connected: "Connected",
+                growth: "+12% since yesterday",
+                footer: "Powered by Docker & Nginx"
+            },
+            de: {
+                dashboard_title: "Instrumententafel",
+                back_home: "← Zurück",
+                server_status: "Serverstatus",
+                redis_connection: "Redis Verbindung",
+                users: "Benutzer",
+                status_active: "Aktiv",
+                status_connected: "Verbunden",
+                growth: "+12% seit gestern",
+                footer: "Unterstützt von Docker & Nginx"
+            },
+            fr: {
+                dashboard_title: "Tableau de bord",
+                back_home: "← Retour",
+                server_status: "État du serveur",
+                redis_connection: "Connexion Redis",
+                users: "Utilisateurs",
+                status_active: "Actif",
+                status_connected: "Connecté",
+                growth: "+12% depuis hier",
+                footer: "Propulsé par Docker & Nginx"
+            },
+            ru: {
+                dashboard_title: "Панель управления",
+                back_home: "← Назад",
+                server_status: "Статус сервера",
+                redis_connection: "Redis Соединение",
+                users: "Пользователи",
+                status_active: "Активен",
+                status_connected: "Подключено",
+                growth: "+12% со вчерашнего дня",
+                footer: "Работает на Docker & Nginx"
+            },
+            es: {
+                dashboard_title: "Tablero",
+                back_home: "← Volver",
+                server_status: "Estado del servidor",
+                redis_connection: "Conexión Redis",
+                users: "Usuarios",
+                status_active: "Activo",
+                status_connected: "Conectado",
+                growth: "+12% desde ayer",
+                footer: "Impulsado por Docker & Nginx"
+            },
+            it: {
+                dashboard_title: "Pannello di controllo",
+                back_home: "← Indietro",
+                server_status: "Stato del server",
+                redis_connection: "Connessione Redis",
+                users: "Utenti",
+                status_active: "Attivo",
+                status_connected: "Connesso",
+                growth: "+12% da ieri",
+                footer: "Basato su Docker & Nginx"
+            }
+        };
+
+        
+        function changeLanguage(lang) {
+            
+            const elements = document.querySelectorAll('[data-i18n]');
+            
+            elements.forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                
+                if (translations[lang] && translations[lang][key]) {
+                    
+                    element.style.opacity = 0;
+                    setTimeout(() => {
+                        element.innerText = translations[lang][key];
+                        element.style.opacity = 1;
+                    }, 150);
+                }
+            });
+
+            
+            localStorage.setItem('preferredLang', lang);
+        }
+
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLang') || 'bg';
+            const selector = document.getElementById('language-selector');
+            
+            if(selector) {
+                selector.value = savedLang;
+                changeLanguage(savedLang);
+            }
+        });
+    </script>
+
+</body>
+</html>

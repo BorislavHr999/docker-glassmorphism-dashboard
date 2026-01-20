@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  web-app:
+    build:
+      context: .
+    container_name: my-web-app
+    ports:
+        - "8080:80"
+    restart: unless-stopped 
+    depends_on:
+      - db
+    volumes:
+      - ./src:/usr/share/nginx/html:ro
+    
+  db:
+      image: redis:alpine
+      container_name: my_redis_db
+      restart: unless-stopped

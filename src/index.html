@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Моята Контейнеризирана Страница</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 min-h-screen flex items-center justify-center font-sans">
+
+    <div class="bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg border border-white border-opacity-30 rounded-2xl shadow-2xl p-10 max-w-lg text-center mx-4 transition-transform transform hover:scale-105 duration-300">
+        
+        <div class="mb-6">
+            <span class="bg-white text-purple-600 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">
+                Dockerized v1.0
+            </span>
+        </div>
+
+        <h1 class="text-4xl font-extrabold text-white mb-4 drop-shadow-md">
+            Здравей, Свят! 🚀
+        </h1>
+        
+        <p class="text-gray-100 mb-8 text-lg leading-relaxed">
+            Тази страница работи напълно изолирано в <strong>Docker контейнер</strong>, използвайки Nginx сървър.
+        </p>
+
+        <div class="flex justify-center gap-4">
+            <a href="#" class="bg-white text-purple-600 font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-gray-100 transition duration-300">
+                Научи повече
+            </a>
+            <a href="#" class="bg-transparent border-2 border-white text-white font-semibold py-3 px-6 rounded-lg hover:bg-white hover:text-purple-600 transition duration-300">
+                Контакт
+            </a>
+        </div>
+        
+        <footer class="mt-10 text-xs text-gray-200 opacity-70">
+            Hosted on Nginx | Alpine Linux
+        </footer>
+    </div>
+
+</body>
+</html>
